@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585592195374.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7F8F36B7",
+    "lastKnownWriteTime" : 8675377778773860922,
+    "last_content_update" : 1585592195374,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "83023F76",
+        "caption" : "otherGender",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=otherGender&cache_key=83023F76",
+        "displayedObservations" : "25",
+        "environment" : "",
+        "expression" : "otherGender",
+        "object" : "otherGender",
+        "preview" : "0",
+        "totalObservations" : "25",
+        "variables" : "9"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

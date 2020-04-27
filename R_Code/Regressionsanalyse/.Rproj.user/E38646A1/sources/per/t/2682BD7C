@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587931570444.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2449066315",
+    "id" : "2682BD7C",
+    "lastKnownWriteTime" : 1587934355,
+    "last_content_update" : 1587934355990,
+    "path" : "C:/Users/Jonas/Desktop/PriorisierungAnalyse/PriorisierungAnalyse.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "2002,141",
+        "scrollLine" : "1988"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

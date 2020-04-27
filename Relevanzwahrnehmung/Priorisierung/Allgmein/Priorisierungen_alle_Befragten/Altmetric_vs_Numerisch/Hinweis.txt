@@ -1,0 +1,38 @@
+Macht nur Sinn hier die Antworten 
+der Personen zu berücksichtigen, die alle 3 Fragen beantwortet haben,
+da sonst die Summen der Numerischen und Altmetric nicht zusammenpassen. 
+
+
+Sonst hier:
+
+
+  Priorisierungsverteilung_2_3  <- data.frame(Priorisierungsverteilung_2$Anzahl,Priorisierungsverteilung_3$Anzahl)
+  data.frame(NewOne2, stringsAsFactors = TRUE)
+  names(Priorisierungsverteilung_2_3) <- c('Numerisch', 'Altmetric')
+  View(Priorisierungsverteilung_2_3)
+  
+  tPriorisierungsverteilung_2_3 <- t(Priorisierungsverteilung_2_3) # Transpose Data
+  View(tPriorisierungsverteilung_2_3)
+  colnames(tPriorisierungsverteilung_2_3) <- Priorisierungsverteilung_2$Reihenfolge
+  
+  
+  
+  pal <- colorRampPalette(colors = c("turquoise", "red"))(2)
+  par(mar=c(3,3,1,0)+1.4)
+  prioplot <- barplot( as.matrix(tPriorisierungsverteilung_2_3), 
+                       #names.arg = Priorisierungsverteilung_1_3_3$Reihenfolge,
+                       cex.names=.9,
+                       horiz=FALSE,
+                       las = 1,
+                       beside=TRUE,
+                       #col = "#5c00cc",
+                       #col = coul,
+                       #col = rainbow(2),
+                       col = pal,
+                       lwd = 3,
+                       ylim=c(0,450),
+                       main = "Priorisierungsverteilung (Numerisch/Altmetric)",
+                       xlab = "Priorisierung",
+                       ylab = "Anzahl")
+  legend("topright", c("Numerisch","Altmetric"), cex=1.2, bty="n", fill=pal, xpd=FALSE)
+  #Priorisierungsverteilung_1_3_2_3_blue_red_klein

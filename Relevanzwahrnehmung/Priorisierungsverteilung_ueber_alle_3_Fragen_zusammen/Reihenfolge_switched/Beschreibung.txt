@@ -1,0 +1,4 @@
+Anzahl der Personen, die von der 2. Frage(Numerisch) 
+auf die 3. Frage(Altmetric) eine andere 
+Priorisierung/Reihenfolge gewählt haben. 
+D.h. sich durch die Altmetric Grafiken beinflussen haben lassen.

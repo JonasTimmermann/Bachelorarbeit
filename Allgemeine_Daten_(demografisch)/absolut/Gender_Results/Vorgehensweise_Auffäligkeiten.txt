@@ -1,0 +1,3 @@
+Umlaute herausfiltern
+
+Daten in responds sind um 1h verschoben bzw. um 2 da Zeitumstellung

@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587944096232.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "83E97202",
+    "lastKnownWriteTime" : 8386114214840984143,
+    "last_content_update" : 1587944096232,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "9448082C",
+        "caption" : "demoDatenDerPriorisierungen",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=demoDatenDerPriorisierungen&cache_key=9448082C",
+        "displayedObservations" : "605",
+        "environment" : "",
+        "expression" : "demoDatenDerPriorisierungen",
+        "object" : "demoDatenDerPriorisierungen",
+        "preview" : "0",
+        "totalObservations" : "605",
+        "variables" : "13"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587900182072.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F79BF6F5",
+    "lastKnownWriteTime" : 3472328296227680304,
+    "last_content_update" : 1587900182072,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "c16fc841d7c94757855625335adbd22f",
+        "name" : "mylogit",
+        "title" : "mylogit"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

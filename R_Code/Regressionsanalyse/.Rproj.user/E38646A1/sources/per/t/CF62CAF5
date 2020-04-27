@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587897774336.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1646236030",
+    "id" : "CF62CAF5",
+    "lastKnownWriteTime" : 1587945600,
+    "last_content_update" : 1587945600911,
+    "path" : "C:/Users/Jonas/Desktop/Regressionsanalyse/logistische_Regressionsanalyse.R",
+    "project_path" : "logistische_Regressionsanalyse.R",
+    "properties" : {
+        "cursorPosition" : "165,0",
+        "scrollLine" : "152",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

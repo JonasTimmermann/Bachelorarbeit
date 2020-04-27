@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585577435535.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4020838790",
+    "id" : "9AA9EF85",
+    "lastKnownWriteTime" : 1585593731,
+    "last_content_update" : 1585593731702,
+    "path" : "C:/Users/Jonas/Desktop/Relevanzwahrnehmung/Relevanzwahrnehmung Gender edit.R",
+    "project_path" : "Relevanzwahrnehmung Gender edit.R",
+    "properties" : {
+        "cursorPosition" : "56,0",
+        "scrollLine" : "37",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

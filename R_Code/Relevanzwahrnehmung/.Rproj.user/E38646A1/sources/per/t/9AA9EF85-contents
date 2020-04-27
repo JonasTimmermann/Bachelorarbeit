@@ -1,0 +1,158 @@
+# LOAD DATA ################################################
+
+install.packages("readxl")
+install.packages("writexl")
+
+library("readxl")
+library("writexl")
+
+demografische_Daten <- read_excel("C:/Users/Jonas/Desktop/Relevanzwahrnehmung_demografische_Daten.xlsx")
+
+# Logik auf Daten
+# my_data$MeineSpalte <- ifelse(my_data$Bach == 13, "dreizehn", "andereZahl")
+
+# Addieren von Werte in neue Spalte
+# my_data$Summe <- my_data$Mozart + my_data$Beethoven + my_data$Bach
+
+# Datentypen der Spalten
+str(demografische_Daten)
+View(demografische_Daten)
+
+# males <- demografische_Daten[demografische_Daten$Gender == "Male" || demografische_Daten$Gender == "Männlich" ,]
+males <- demografische_Daten[demografische_Daten$Gender == "Male" | demografische_Daten$Gender == "Männlich" ,]
+females <- demografische_Daten[demografische_Daten$Gender == "Weiblich" | demografische_Daten$Gender == "Female" ,]
+#males <- na.omit(mutate_all(males, ~ifelse(. %in% c("N/A", "null", ""),  NA, .)))
+males <- males[!(is.na(males$Gender) | males$Gender==""), ]
+females <- females[!(is.na(females$Gender) | females$Gender==""), ]
+
+naGender <- demografische_Daten %>% filter_all(any_vars(is.na(Gender))) 
+#otherGender <- demografische_Daten[demografische_Daten$Gender=="Männlich", ]
+View(naGender)
+
+otherGender <- demografische_Daten[demografische_Daten$Gender != "Weiblich" & demografische_Daten$Gender != "Männlich"
+                                     & demografische_Daten$Gender != "Female" & demografische_Daten$Gender != "Male" ,]
+#View(otherGender)
+otherGender <- otherGender[!(is.na(otherGender$Gender) | otherGender$Gender==""), ]
+
+View(otherGender)
+View(males)
+View(females)
+
+femalesGenderColumn <- females$Gender
+femalesCount = length(femalesGenderColumn)
+print(femalesCount)
+
+malesGenderColumn <- males$Gender
+malesCount = length(malesGenderColumn)
+print(malesCount)
+
+write_xlsx(males, "C:/Users/Jonas/Desktop/Gender_Results/males.xlsx")
+write_xlsx(females, "C:/Users/Jonas/Desktop/Gender_Results/females.xlsx")
+write_xlsx(naGender, "C:/Users/Jonas/Desktop/Gender_Results/na.xlsx")
+write_xlsx(otherGender, "C:/Users/Jonas/Desktop/Gender_Results/other.xlsx")
+
+
+
+
+germanyGesamtCaseZahl = sum(germany$cases)
+
+germanyMaxCaseZahl = max(germany$cases)
+
+germ <- germany[4:8,]
+germCases <- germ$cases
+View(germCases)
+
+casesPerDayGermany <- germany$cases
+View(casesPerDayGermany)
+barplot(casesPerDayGermany, 
+        col = "#5c00cc",
+        lwd = 4,
+        main = "Corona-Fallzahlen pro Tag",
+        xlab = "Tag",
+        ylab = "Anzahl")
+
+View(germanyGesamtCaseZahl)
+View(germanyMaxCaseZahl)
+
+x = length(casesPerDayGermany) # nrow
+print(x)
+#i = 0
+#for(i in c:x){
+#  x = x - 1
+#  print(x)}
+germany$totalCases <- germany$cases 
+View(germany)
+i <- 1
+while(i < x) {
+  print(i)
+  germ <- germany[1:x,]
+  germCases <- germ$cases[i:x]
+  sumOfGerms <- sum(germCases)
+  germany$totalCases[i] = sumOfGerms 
+  print(sumOfGerms)
+  i <- i+1
+}
+View(germany)
+
+germany$totalDeath <- NULL
+
+germanyTotalCases <- germany$totalCases
+View (germanyTotalCases)
+germanyTotalCasesFlip <- germany[nrow(germany):1,]
+View (germanyTotalCasesFlip)
+head(germany)
+
+write_xlsx(germany, "C:/Users/Jonas/Desktop/COVID-19-germany.xlsx")
+write_xlsx(germanyTotalCasesFlip, "C:/Users/Jonas/Desktop/COVID-19-germany-flipped.xlsx")
+
+write_xlsx(data, "data/cereal-yield-1990-to-1995.xlsx")
+# germany$totalDeath <- germany$cases 
+
+
+
+
+
+# Gibt Zeile zurück
+bachWithOver <- my_data[my_data$Month == "2009-09",]
+# Gibt spalte 2 zurück
+bachWithOver <- my_data[2]
+
+# gibt alle zeilen zurück wo Mozart >= 12
+bachWithOver <- my_data[my_data$Mozart >= 12,]
+
+# Addiert die Werte von den bach/Mozart Spalten
+BachAndMozartAddiert <- bachWithOver$Mozart + bachWithOver$Bach
+
+# Extrahiert die 2 Spalten von der ganzen Tabelle
+onlyBachMozart <- data.frame(bachWithOver$Mozart,bachWithOver$Bach)
+
+view(onlyBachMozart)
+
+# Umbenennung der Spalten
+colnames(onlyBachMozart) <- c("Mozart", "Bach")
+
+# col=Farbe, lwd=Punktgröße
+plot(onlyBachMozart,
+     col = "#5c00cc",
+     lwd = 4,
+     main = "Mozart-Bachberhältnis",
+     xlab = "MozartZahl",
+     ylab = "BachZahl")
+
+view(onlyBachMozart)
+view(BachAndMozartAddiert)
+view(bachWithOver)
+
+# gibt tabelle wieder mit allen Reihen bei denen in Spalte "Bach" == 12 steht (Filtern nach Reihen geht hinter dem Komma)
+bachWithOver <- my_data[my_data$Bach == 12,]
+
+view(bachWithOver)
+
+
+head(my_data) 
+summary(my_data)  
+plot(my_data)
+
+plot(my_data$Mozart)  # Cat x quant
+
+

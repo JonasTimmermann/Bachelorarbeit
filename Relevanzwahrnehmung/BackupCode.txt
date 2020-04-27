@@ -1,0 +1,182 @@
+# ALLE Education
+  Prio = unique(Data$Priorisierung)
+  laengePrio = length(Prio)
+  print(laengePrio)
+  PrioSubTableAll = NULL
+  PrioSubTableAllRelative = NULL
+  j <- 1
+  while(j < laengePrio + 1){
+    
+    PrioSub_Female <- subset(DataFemale, Priorisierung %in% Prio[j])
+    PrioSub_Male <- subset(DataMale, Priorisierung %in% Prio[j])
+    PrioSub_Keine <- subset(DataKeine, Priorisierung %in% Prio[j])
+    PrioSub_Andere <- subset(DataAndere, Priorisierung %in% Prio[j])
+    
+    laengeFemale = length(DataFemale$Respondent_ID)
+    laengeMale = length(DataMale$Respondent_ID)
+    laengeKeine = length(DataKeine$Respondent_ID)
+    laengeAndere = length(DataAndere$Respondent_ID)
+    
+    Anzahl_Female = length(PrioSub_Female$Respondent_ID)
+    Anzahl_Male = length(PrioSub_Male$Respondent_ID)
+    Anzahl_Keine = length(PrioSub_Keine$Respondent_ID)
+    Anzahl_Andere = length(PrioSub_Andere$Respondent_ID)
+    Reihenfolge = Prio[j]
+    RelativerAnteil_in_Prozent_Female = round((Anzahl_Female/laengeFemale) * 100,2)
+    RelativerAnteil_in_Prozent_Male = round((Anzahl_Male/laengeMale) * 100,2)
+    RelativerAnteil_in_Prozent_Keine = round((Anzahl_Keine/laengeKeine) * 100,2)
+    RelativerAnteil_in_Prozent_Andere = round((Anzahl_Andere/laengeAndere) * 100,2)
+    
+    PrioSubTableAll = rbind(PrioSubTableAll, data.frame(Reihenfolge, Anzahl_Female,
+                                                        Anzahl_Male, Anzahl_Keine,
+                                                        Anzahl_Andere))
+    PrioSubTableAllRelative = rbind(PrioSubTableAllRelative, data.frame(Reihenfolge, RelativerAnteil_in_Prozent_Female,
+                                                                        RelativerAnteil_in_Prozent_Male,
+                                                                        RelativerAnteil_in_Prozent_Keine,
+                                                                        RelativerAnteil_in_Prozent_Andere))
+    
+    
+    j = j + 1
+  }
+  View(PrioSubTableAll)
+  View(PrioSubTableAllRelative)
+  
+  print(sum(PrioSubTableAll$Anzahl_Male))
+  
+  PrioSubTableAllOver5 = PrioSubTableAll[PrioSubTableAll$Anzahl_Female >= 4, ]
+  PrioSubTableAll = PrioSubTableAll[order(PrioSubTableAll$Anzahl_Female),]
+  PrioSubTableAllOver5 = PrioSubTableAllOver5[order(PrioSubTableAllOver5$Anzahl_Female),]
+  
+  PrioSubTableAllRelativeOver5 = PrioSubTableAllRelative[PrioSubTableAllRelative$RelativerAnteil_in_Prozent_Female >= 1.4, ]
+  PrioSubTableAllRelative = PrioSubTableAllRelative[order(PrioSubTableAllRelative$RelativerAnteil_in_Prozent_Female),]
+  PrioSubTableAllRelativeOver5 = PrioSubTableAllRelativeOver5[order(PrioSubTableAllRelativeOver5$RelativerAnteil_in_Prozent_Female),]
+  
+  View(PrioSubTableAllRelative)
+  View(PrioSubTableAllRelativeOver5)
+  
+  View(PrioSubTableAll)
+  View(PrioSubTableAllOver5)
+  
+  write_xlsx(PrioSubTableAll, "C:/Users/Jonas/Desktop/Prio/ExcelTabellen_Priorisierung/nach_Gender/Priorisierungsreihenfolge_Alle.xlsx")
+  write_xlsx(PrioSubTableAllOver5, "C:/Users/Jonas/Desktop/Prio/ExcelTabellen_Priorisierung/nach_Gender/Priorisierungsreihenfolge_Alle_over_4.xlsx")    
+  
+  write_xlsx(PrioSubTableAllRelative, "C:/Users/Jonas/Desktop/Prio/ExcelTabellen_Priorisierung/nach_Gender/Priorisierungsreihenfolge_Alle_Relative.xlsx")
+  write_xlsx(PrioSubTableAllRelativeOver5, "C:/Users/Jonas/Desktop/Prio/ExcelTabellen_Priorisierung/nach_Gender/Priorisierungsreihenfolge_Alle_Relative_over_1,4.xlsx")  
+  
+  
+  
+  #Relative
+  names(PrioSubTableAllRelativeOver5) <- c('Reihenfolge','Female', 'Male','Keine', 'Andere')
+  View(PrioSubTableAllRelativeOver5)
+  
+  tPrioSubTableAllRelativeOver5 <- t(PrioSubTableAllRelativeOver5) # Transpose Data
+  View(tPrioSubTableAllRelativeOver5)
+  colnames(tPrioSubTableAllRelativeOver5) <- PrioSubTableAllRelativeOver5$Reihenfolge
+  tPrioSubTableAllRelativeOver5 <- tPrioSubTableAllRelativeOver5[-c(1), ]
+  #tPrioSubTableAllOver5 = tPrioSubTableAllOver5[order(tPrioSubTableAllOver5$`| 1.2 | 1,3,2 | 1,3,2 |`),]
+  a2 <- as.matrix(tPrioSubTableAllRelativeOver5)
+  #a.num <- as.numeric(a)
+  a2 = a2[order(a2[, 8]), ]
+  View(a2)
+  #is.numeric(a)
+  a2 <- apply(a2, 2, as.numeric)
+  
+  #pal <- colorRampPalette(colors = c("red", "turquoise"))(4)
+  #pal <- colorRampPalette(colors = c("green", "blue"))(4)
+  #pal <- colorRampPalette(colors = c("red", "blue","green","orange"))
+  par(mar=c(3,6.2,1,0)+1.2)
+  par(mgp=c(2,0.5,0))
+  mp <- barplot( a2, 
+                 cex.names=.9,
+                 horiz=TRUE,
+                 las = 1,
+                 beside=TRUE,
+                 #col = "#5c00cc",
+                 #col = coul,
+                 #col = rainbow(4),
+                 #col = pal,
+                 col = c("green", "red","yellow","dodgerblue"),
+                 lwd = 2,
+                 xlim=c(0,60),
+                 main = "Priorisierung nach Gender (relativ)",
+                 xlab = "Prozent")
+  legend("right", c("Keine","Weiblich","Andere","Männlich"), cex=1.2, fill=c("green", "red","yellow","dodgerblue"),bg='gray84')
+  #legend("right", c("Andere","Keine","Weiblich","Männlich"), cex=1.2, bty="n", fill=c("yellow", "green","red","dodgerblue"), xpd=FALSE,bg='lightblue')
+  xval = seq(0, 60, 10)
+  axis(side = 1, at = xval, labels = TRUE, xpd=T, las = 1)
+  abline(v=c(seq(10,60,10)))
+  mp <- barplot( a2, 
+                 cex.names=.9,
+                 horiz=TRUE,
+                 las = 1,
+                 beside=TRUE,
+                 #col = "#5c00cc",
+                 #col = coul,
+                 #col = rainbow(4),
+                 #col = pal,
+                 col = c("green", "red","yellow","dodgerblue"),
+                 lwd = 2,
+                 add = TRUE,
+                 xlim=c(0,60),
+                 main = "Priorisierung nach Gender (relativ)",
+                 xlab = "Anzahl")
+  
+  #Priorisierungsreihenfolge_alle_over_1,4_relativ_mitGitter_klein
+  
+  
+  
+  #Absolute  
+  
+  names(PrioSubTableAllOver5) <- c('Reihenfolge','Female', 'Male','Keine', 'Andere')
+  View(PrioSubTableAllOver5)
+  
+  tPrioSubTableAllOver5 <- t(PrioSubTableAllOver5) # Transpose Data
+  View(tPrioSubTableAllOver5)
+  colnames(tPrioSubTableAllOver5) <- PrioSubTableAllOver5$Reihenfolge
+  tPrioSubTableAllOver5 <- tPrioSubTableAllOver5[-c(1), ]
+  #tPrioSubTableAllOver5 = tPrioSubTableAllOver5[order(tPrioSubTableAllOver5$`| 1.2 | 1,3,2 | 1,3,2 |`),]
+  a <- as.matrix(tPrioSubTableAllOver5)
+  #a.num <- as.numeric(a)
+  a = a[order(a[, 6]), ]
+  View(a)
+  #is.numeric(a)
+  a <- apply(a, 2, as.numeric)
+  
+  par(mar=c(3,6.2,1,0)+1.2)
+  par(mgp=c(2,0.5,0))
+  mp <- barplot( a, 
+                 cex.names=.9,
+                 horiz=TRUE,
+                 las = 1,
+                 beside=TRUE,
+                 #col = "#5c00cc",
+                 #col = coul,
+                 #col = rainbow(4),
+                 #col = pal,
+                 col = c("yellow", "green","red","dodgerblue"),
+                 lwd = 2,
+                 xlim=c(0,100),
+                 main = "Priorisierung nach Gender (absolut)",
+                 xlab = "Anzahl")
+  legend("right", c("Andere","Keine","Weiblich","Männlich"), cex=1.2, fill=c("yellow", "green","red","dodgerblue"),bg='gray84')
+  #legend("right", c("Andere","Keine","Weiblich","Männlich"), cex=1.2, bty="n", fill=c("yellow", "green","red","dodgerblue"), xpd=FALSE,bg='lightblue')
+  xval = seq(0, 100, 10)
+  axis(side = 1, at = xval, labels = TRUE, xpd=T, las = 1)
+  abline(v=c(seq(10,100,10)))
+  mp <- barplot( a, 
+                 cex.names=.9,
+                 horiz=TRUE,
+                 las = 1,
+                 beside=TRUE,
+                 #col = "#5c00cc",
+                 #col = coul,
+                 #col = rainbow(4),
+                 #col = pal,
+                 col = c("yellow", "green","red","dodgerblue"),
+                 lwd = 2,
+                 add = TRUE,
+                 xlim=c(0,100),
+                 main = "Priorisierung nach Gender (absolut)",
+                 xlab = "Anzahl")
+  
+  #Priorisierungsreihenfolge_alle_over_4_mitGitter_klein

@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585577715863.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7AC3C973",
+    "lastKnownWriteTime" : 8533869541156729397,
+    "last_content_update" : 1585577715863,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7EDFBB23",
+        "caption" : "demografische_Daten",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=demografische_Daten&cache_key=7EDFBB23",
+        "displayedObservations" : 1052,
+        "environment" : "",
+        "expression" : "demografische_Daten",
+        "object" : "demografische_Daten",
+        "preview" : 0,
+        "totalObservations" : 1052,
+        "variables" : 9
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
